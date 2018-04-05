@@ -1,0 +1,65 @@
+{
+  "incrementByStep": {
+    "canBeFirst": true,
+    "shouldBeFirst": false,
+    "description": "Increments the given integer value by configured step",
+    "inputConfig": [
+      {
+        "dataType": "int",
+        "default": "0"
+      },
+      {
+        "dataType": "int",
+        "default": "1"
+      }
+    ],
+    "outputConfig": [
+      {
+        "dataType": "int",
+        "default": "0"
+      }
+    ]
+  },
+  "add": {
+    "canBeFirst": true,
+    "shouldBeFirst": false,
+    "description": "Adds the given two integers",
+    "inputConfig": [
+      {
+        "dataType": "int",
+        "default": "0"
+      },
+      {
+        "dataType": "int",
+        "default": "0"
+      }
+    ],
+    "outputConfig": [
+      {
+        "dataType": "int",
+        "default": "0"
+      }
+    ]
+  },
+  "multiply": {
+    "canBeFirst": true,
+    "shouldBeFirst": false,
+    "description": "Multiplies the given two integers",
+    "inputConfig": [
+      {
+        "dataType": "int",
+        "default": "0"
+      },
+      {
+        "dataType": "int",
+        "default": "0"
+      }
+    ],
+    "outputConfig": [
+      {
+        "dataType": "int",
+        "default": "0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "channels": {
+    "ddp": {
+      "stepsSequence": [
+        {
+          "stepName": "incrementByStep",
+          "inputConfig": [
+            {
+              "dataType": "int",
+              "default": "0"
+            },
+            {
+              "dataType": "int",
+              "default": "5"
+            }
+          ]
+        },
+        {
+          "stepName": "add",
+          "inputConfig": [
+            {
+              "dataType": "int",
+              "input": "0.0",
+              "default": "0"
+            },
+            {
+              "dataType": "int",
+              "input": "0.0",
+              "default": "2"
+            }
+          ]
+        },
+        {
+          "stepName": "multiply",
+          "inputConfig": [
+            {
+              "dataType": "int",
+              "input": "0.0",
+              "default": "0"
+            },
+            {
+              "dataType": "int",
+              "input": "1.0",
+              "default": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "AppNexus": {
+      "stepsSequence": [
+        {
+          "stepName": "incrementByStep",
+          "inputConfig": [
+            {
+              "dataType": "int",
+              "default": ""
+            },
+            {
+              "dataType": "int",
+              "default": "1"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
