@@ -40,7 +40,7 @@ func Errorf(format string, args ...interface{}) {
 func LogObj(obj interface{}) {
 	b, err := json.MarshalIndent(obj, "", "  ")
 	if err != nil {
-		Error(err)
+		panic(err)
 	}
 	Info(string(b))
 }

@@ -1,62 +1,75 @@
 {
   "incrementByStep": {
     "canBeFirst": true,
-    "shouldBeFirst": false,
-    "description": "Increments the given integer value by configured step",
+    "shouldBeFirstOnly": false,
+    "desc": "Increments the given integer value by configured step",
     "inputConfig": [
       {
+        "name": "Input",
         "dataType": "int",
-        "default": "0"
+        "default": "0",
+        "canUseDefault": true
       },
       {
+        "name": "Step",
         "dataType": "int",
-        "default": "1"
+        "default": "1",
+        "canUseDefault": true
       }
     ],
     "outputConfig": [
       {
-        "dataType": "int",
-        "default": "0"
+        "name": "IncrementValue",
+        "dataType": "int"
       }
     ]
   },
   "add": {
     "canBeFirst": true,
-    "shouldBeFirst": false,
-    "description": "Adds the given two integers",
+    "shouldBeFirstOnly": false,
+    "desc": "Adds the given two integers",
     "inputConfig": [
       {
+        "name": "Input1",
         "dataType": "int",
-        "default": "0"
+        "default": "0",
+        "canUseDefault": true
       },
       {
+        "name": "Input2",
         "dataType": "int",
-        "default": "0"
+        "default": "0",
+        "canUseDefault": true
       }
     ],
     "outputConfig": [
       {
-        "dataType": "int",
-        "default": "0"
+        "name": "SumValue",
+        "dataType": "int"
       }
     ]
   },
   "multiply": {
     "canBeFirst": true,
-    "shouldBeFirst": false,
-    "description": "Multiplies the given two integers",
+    "shouldBeFirstOnly": false,
+    "desc": "Multiplies the given two integers",
     "inputConfig": [
       {
+        "name": "Input1",
         "dataType": "int",
-        "default": "0"
+        "default": "0",
+        "canUseDefault": true
       },
       {
+        "name": "Input2",
         "dataType": "int",
-        "default": "0"
+        "default": "0",
+        "canUseDefault": true
       }
     ],
     "outputConfig": [
       {
+        "name": "ProductValue",
         "dataType": "int",
         "default": "0"
       }

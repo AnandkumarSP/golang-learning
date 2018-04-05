@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
 	"../logger"
@@ -36,6 +38,26 @@ func jsonHandler(c *gin.Context) {
 	response := make(map[string]string)
 	response["0"] = "abcd"
 	c.JSON(http.StatusOK, response)
+}
+
+func getChannelConfig(c *gin.Context) {
+	c.JSON(http.StatusOK, utils.Config)
+}
+
+func setChannelConfig(c *gin.Context) {
+	defer genericResponseErrorHandler(c)
+
+	var pluginsConfig interface{}
+	c.BindJSON(&pluginsConfig)
+	err := utils.UpdateConfig(pluginsConfig)
+	if err != nil {
+		panic(utils.NewCustomError(err.Error(), http.StatusInternalServerError))
+	}
+	c.String(http.StatusOK, "")
+}
+
+func getPluginsConfig(c *gin.Context) {
+	c.JSON(http.StatusOK, utils.PluginsConfig)
 }
 
 func getQueryParam(q map[string][]string, key string) string {
@@ -156,8 +178,31 @@ func upload(c *gin.Context) {
 
 func (s *ZServer) registerRoutes() {
 	router := gin.Default()
+	// CORS for https://foo.com and https://github.com origins, allowing:
+	// - PUT and PATCH methods
+	// - Origin header
+	// - Credentials share
+	// - Preflight requests cached for 12 hours
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"https://foo.com"},
+		AllowMethods:     []string{"PUT", "PATCH"},
+		AllowHeaders:     []string{"Origin", "Accept", "Content-Type"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		AllowOriginFunc: func(origin string) bool {
+			return true
+		},
+		MaxAge: 12 * time.Hour,
+	}))
+
 	router.GET("/", defaultHandler)
 	router.GET("/json", jsonHandler)
+
+	router.GET("/channelConfig", getChannelConfig)
+	router.OPTIONS("/channelConfig", defaultHandler)
+	router.POST("/channelConfig", setChannelConfig)
+	router.GET("/pluginsConfig", getPluginsConfig)
+
 	router.GET("/channel/:channel", upload)
 	s.server.Handler = router
 }

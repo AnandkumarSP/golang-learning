@@ -1,68 +1,96 @@
 {
-  "channels": {
-    "ddp": {
-      "stepsSequence": [
+  "Channels": {
+    "AppNexus": {
+      "StepsSequence": [
         {
-          "stepName": "incrementByStep",
-          "inputConfig": [
+          "InputConfig": [
             {
-              "dataType": "int",
-              "default": "0"
+              "Name": "Input",
+              "DataType": "int",
+              "Default": "1",
+              "Input": "",
+              "CanUseDefault": true
             },
             {
-              "dataType": "int",
-              "default": "5"
+              "Name": "Step",
+              "DataType": "int",
+              "Default": "1",
+              "Input": "",
+              "CanUseDefault": true
             }
-          ]
-        },
-        {
-          "stepName": "add",
-          "inputConfig": [
-            {
-              "dataType": "int",
-              "input": "0.0",
-              "default": "0"
-            },
-            {
-              "dataType": "int",
-              "input": "0.0",
-              "default": "2"
-            }
-          ]
-        },
-        {
-          "stepName": "multiply",
-          "inputConfig": [
-            {
-              "dataType": "int",
-              "input": "0.0",
-              "default": "0"
-            },
-            {
-              "dataType": "int",
-              "input": "1.0",
-              "default": "2"
-            }
-          ]
+          ],
+          "StepName": "incrementByStep"
         }
       ]
     },
-    "AppNexus": {
-      "stepsSequence": [
+    "DDP": {
+      "StepsSequence": [
         {
-          "stepName": "incrementByStep",
-          "inputConfig": [
+          "InputConfig": [
             {
-              "dataType": "int",
-              "default": ""
+              "Name": "Input",
+              "DataType": "int",
+              "Default": "0",
+              "Input": "",
+              "CanUseDefault": true
             },
             {
-              "dataType": "int",
-              "default": "1"
+              "Name": "Step",
+              "DataType": "int",
+              "Default": "3",
+              "Input": "",
+              "CanUseDefault": true
             }
-          ]
+          ],
+          "StepName": "incrementByStep"
+        },
+        {
+          "InputConfig": [
+            {
+              "Name": "Input1",
+              "DataType": "int",
+              "Default": "0",
+              "Input": "0.0",
+              "CanUseDefault": true
+            },
+            {
+              "Name": "Input2",
+              "DataType": "int",
+              "Default": "2",
+              "Input": "0.0",
+              "CanUseDefault": true
+            }
+          ],
+          "StepName": "add"
+        },
+        {
+          "InputConfig": [
+            {
+              "Name": "Input1",
+              "DataType": "int",
+              "Default": "0",
+              "Input": "0.0",
+              "CanUseDefault": true
+            },
+            {
+              "Name": "Input2",
+              "DataType": "int",
+              "Default": "2",
+              "Input": "1.0",
+              "CanUseDefault": true
+            }
+          ],
+          "StepName": "multiply"
         }
       ]
     }
-  }
+  },
+  "FirstStepInputConfig": [
+    {
+      "Name": "Input1",
+      "DataType": "int",
+      "Default": "1",
+      "CanUseDefault": true
+    }
+  ]
 }

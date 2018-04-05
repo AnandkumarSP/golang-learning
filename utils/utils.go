@@ -14,11 +14,19 @@ type configuration struct {
 		StepsSequence []struct {
 			StepName    string
 			InputConfig []struct {
-				DataType string
-				Input    string
-				Default  string
+				Name          string
+				DataType      string
+				Input         string
+				Default       string
+				CanUseDefault bool
 			}
 		}
+	}
+	FirstStepInputConfig []struct {
+		Name          string
+		DataType      string
+		Default       string
+		CanUseDefault bool
 	}
 }
 
@@ -27,10 +35,18 @@ var Config configuration
 
 // pluginsConfiguration defines the pluginConfig.
 type pluginsConfiguration struct {
-	CanBeFirst  bool
-	InputConfig struct {
+	CanBeFirst        bool
+	ShouldBeFirstOnly bool
+	Desc              string
+	InputConfig       []struct {
+		Name          string
+		DataType      string
+		Default       string
+		CanUseDefault bool
+	}
+	OutputConfig []struct {
+		Name     string
 		DataType string
-		Default  string
 	}
 }
 
@@ -82,6 +98,19 @@ func (e *CustomError) Error() string {
 // ErrorCode return the HTTP status code.
 func (e *CustomError) ErrorCode() int {
 	return e.code
+}
+
+func UpdateConfig(obj interface{}) (err error) {
+	defer GenericErrorHandler(nil)
+	jsonString, err := json.MarshalIndent(obj, "", "  ")
+	if err != nil {
+		return
+	}
+	err = ioutil.WriteFile("config.json", jsonString, 0664)
+	if err != nil {
+		return
+	}
+	return
 }
 
 // RefreshUploaderConfig returns the uploader configuration.
