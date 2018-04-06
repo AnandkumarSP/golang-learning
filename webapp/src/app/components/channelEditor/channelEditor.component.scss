@@ -45,6 +45,8 @@
       }
 
       &.drop {
+        background-color: #ecf8ec;
+
         &:before {
           content: "\e904";
           transform: none;
