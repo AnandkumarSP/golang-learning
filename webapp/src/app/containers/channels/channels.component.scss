@@ -1,4 +1,4 @@
-$sidebarWidth: 300px;
+$sidebarWidth: 250px;
 
 .channelsPage {
   height: 100%;
@@ -6,13 +6,72 @@ $sidebarWidth: 300px;
 
   .channelsListContainer {
     float: left;
-    border: 1px solid black;
+    background-color: #E0EEFF;
     width: $sidebarWidth;
+
+    .channelList {
+      border-bottom: 1px solid #D6D6DB;
+      cursor: pointer;
+      padding-left: 15px;
+      line-height: 55px;
+
+      &.selected {
+        color: #0074FF;
+      }
+
+      &.modified {
+        border-left: 5px solid #bdbdc3;
+        padding-left: 10px;
+      }
+
+      &.new {
+        border-left: 5px solid green;
+        padding-left: 10px;
+      }
+
+      &.icon {
+        color: green;
+
+        &:before {
+          padding-right: 6px;
+        }
+      }
+    }
   }
 
   .channelEditorContainer {
     float: left;
-    border: 1px solid black;
     width: calc(100% - #{$sidebarWidth});
+
+    .channelEditor {
+      overflow: scroll;
+      position: relative;
+      height: calc(100% - 70px);
+    }
+
+    .btnContainer {
+      border-top: 1px solid rgba(222, 222, 222, 0.6);
+      height: 70px;
+      margin: 0px 20px;
+
+      .btn {
+        background: #0074ff;
+        border-radius: 20px;
+        border-width: 0px;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        height: 40px;
+        margin: 15px;
+        outline: none;
+        padding: 0px 20px;
+
+        &[disabled] {
+          background: #bdbdc3;
+          cursor: not-allowed;
+        }
+      }
+    }
   }
 }

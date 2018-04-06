@@ -11,13 +11,16 @@ export class ChannelEditorComponent implements OnInit, OnChanges {
   @Input() pluginsConfig: any = {};
   @Input() updateChannelName: any;
 
+  public dragging = false;
+  public dragStageDropIndex = 0;
   private dragStageIndex = 0;
   private _channelName = '';
 
   constructor() {
-    this.deleteStep = this.deleteStep.bind(this);
+    this.dropEnd = this.dropEnd.bind(this);
     this.dragStage = this.dragStage.bind(this);
     this.dropStage = this.dropStage.bind(this);
+    this.deleteStep = this.deleteStep.bind(this);
     this.getDupStepConfig = this.getDupStepConfig.bind(this);
   }
 
@@ -69,15 +72,16 @@ export class ChannelEditorComponent implements OnInit, OnChanges {
   }
 
   public dragStage(e, index) {
+    this.dragging = true;
     this.dragStageIndex = index;
   }
 
-  public dragoverStage(e) {
+  public dragoverStage(e, index) {
     e.preventDefault();
+    this.dragStageDropIndex = index;
   }
 
   public dropStage(e, targetIndex) {
-    console.log(this.dragStageIndex, targetIndex);
     e.preventDefault();
     if (this.dragStageIndex === targetIndex) {
       // Take no action
@@ -91,5 +95,9 @@ export class ChannelEditorComponent implements OnInit, OnChanges {
     this.systemConfig.Channels[this.channelName].StepsSequence.splice(this.dragStageIndex, 1);
     this.systemConfig.Channels[this.channelName].StepsSequence.splice(targetIndex, 0, sourceConfig);
     this.systemConfig.Channels[this.channelName].$modified = true;
+  }
+
+  public dropEnd() {
+    this.dragging = false;
   }
 }

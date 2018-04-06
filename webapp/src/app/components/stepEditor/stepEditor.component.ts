@@ -16,6 +16,7 @@ export class StepEditorComponent implements OnInit {
   @Input() getDupStepConfig: any = noop;
   @Input() deleteStep: any = noop;
   @Input() dragStage: any = noop;
+  @Input() dropEnd: any = noop;
 
   public showDesc = false;
 

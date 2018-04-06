@@ -6,6 +6,7 @@ import { HttpService } from './http.service';
 @Injectable()
 export class ChannelService {
   public channelsConfig: any = {};
+  public channelsConfigOriginal: any = {};
   public pluginsConfig: any = {};
 
   constructor(public httpService: HttpService) {
@@ -21,6 +22,7 @@ export class ChannelService {
     this.httpService.doGet(`${environment.uploaderEndPoint}/channelConfig`)
       .then((res) => {
         this.channelsConfig = res;
+        this.channelsConfigOriginal = JSON.parse(JSON.stringify(res));
       });
   }
 

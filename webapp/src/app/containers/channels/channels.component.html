@@ -1,23 +1,38 @@
-<section class="channelsPage">
-  <section class="channelsListContainer">
+<section class="channelsPage pageComponent">
+  <section class="channelsListContainer fullHeight">
     <ng-container *ngIf="channelService.channelsConfig.Channels">
       <div
+        class="channelList"
+        [ngClass]="{selected: channel === selectedChannel, new: channelService.channelsConfig.Channels[channel].$new, modified: channelService.channelsConfig.Channels[channel].$modified}"
         *ngFor="let channel of channelService.channelsConfig.Channels | ObjNgFor:true:false"
         (click)="selectChannel(channel)">
         {{channel}}
       </div>
     </ng-container>
-    <div (click)="addChannel()">Add Channel</div>
+    <div
+      class="channelList icon add"
+      (click)="addChannel()">Add Channel</div>
   </section>
 
-  <section class="channelEditorContainer">
+  <section class="channelEditorContainer fullHeight">
     <ng-container *ngIf="selectedChannel">
-      <app-channel-editor
-        [channelName]="selectedChannel"
-        [updateChannelName]="updateChannelName"
-        [systemConfig]="channelService.channelsConfig"
-        [pluginsConfig]="channelService.pluginsConfig"></app-channel-editor>
-      <button (click)="saveChannel()">Save Channel</button>
+      <section class="channelEditor">
+        <app-channel-editor
+          [channelName]="selectedChannel"
+          [updateChannelName]="updateChannelName"
+          [systemConfig]="channelService.channelsConfig"
+          [pluginsConfig]="channelService.pluginsConfig"></app-channel-editor>
+      </section>
+
+      <section class="btnContainer">
+        <button
+          class="btn"
+          (click)="saveChannel()">SAVE CHANGES</button>
+        <button
+          class="btn"
+          (click)="revertChanges()"
+          [disabled]="channelService.channelsConfig.Channels[selectedChannel].$new || !channelService.channelsConfig.Channels[selectedChannel].$modified">REVERT ALL CHANGES</button>
+      </section>
     </ng-container>
   </section>
 

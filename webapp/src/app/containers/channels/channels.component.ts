@@ -1,3 +1,4 @@
+// tslint:disable:max-line-length
 import { Component } from '@angular/core';
 
 import { ChannelService } from './../../services';
@@ -50,10 +51,11 @@ export class ChannelsComponent {
   }
 
   public saveChannel() {
-    console.log(this.selectedChannel);
-    // tslint:disable-next-line:max-line-length
     const channelConfig = JSON.parse(JSON.stringify(this.channelService.channelsConfig.Channels[this.selectedChannel], (k, v) => k.startsWith('$') ? undefined : v));
-    console.log(this.selectedChannel, channelConfig);
     this.channelService.updateChannelConfig(this.selectedChannel, channelConfig);
+  }
+
+  public revertChanges() {
+    this.channelService.channelsConfig.Channels[this.selectedChannel] = JSON.parse(JSON.stringify(this.channelService.channelsConfigOriginal.Channels[this.selectedChannel]));
   }
 }

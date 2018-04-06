@@ -1,11 +1,28 @@
-<section>
-  Channel editor component
-  <section>
-    <p>New: {{systemConfig.Channels[channelName].$new}}</p>
-    <p>Modified: {{systemConfig.Channels[channelName].$modified}}</p>
-    <input [readonly]="!systemConfig.Channels[channelName].$new" [(ngModel)]="_channelName" (blur)="_updateChannelName()" >
-    <div *ngFor="let step of systemConfig.Channels[channelName].StepsSequence; let i = index; let last = last;">
-      <div (click)="addStep(i)" (dragover)="dragoverStage($event)" (drop)="dropStage($event, i)">Add Step</div>
+<section class="channelEditorContainer fullHeight">
+  <!-- <section class="heading">Channel Workflow Editor</section> -->
+  <section class="content">
+    <span class="channelNameLabel">Channel Name: </span>
+    <input
+      class="channelName"
+      [readonly]="!systemConfig.Channels[channelName].$new"
+      [(ngModel)]="_channelName"
+      (blur)="_updateChannelName()" >
+
+    <div
+      class="stepConfigContainer"
+      *ngFor="let step of systemConfig.Channels[channelName].StepsSequence; let i = index; let last = last;">
+
+      <div
+        title="Add Step"
+        class="separator icon next"
+        [ngClass]="{drop: dragging && dragStageDropIndex === i}"
+        (click)="addStep(i)"
+        (drop)="dropStage($event, i)"
+        (dragover)="dragoverStage($event, i)">
+        <span class="insert">INSERT STEP</span>
+        <span class="move">MOVE STAGE HERE</span>
+      </div>
+
       <app-step-editor
         [index]="i"
         [stepConfig]="step"
@@ -14,8 +31,18 @@
         [pluginsConfig]="pluginsConfig"
         [deleteStep]="deleteStep"
         [dragStage]="dragStage"
+        [dropEnd]="dropEnd"
         [getDupStepConfig]="getDupStepConfig"></app-step-editor>
     </div>
-    <div (click)="addStep()">Add Step</div>
+    <div
+      title="Add Step"
+      class="paddingBtm20 separator icon next"
+      [ngClass]="{drop: dragging && dragStageDropIndex === i}"
+      (click)="addStep()"
+      (drop)="dropStage($event, i)"
+      (dragover)="dragoverStage($event, i)">
+      <span class="insert">INSERT STEP</span>
+      <span class="move">MOVE STAGE HERE</span>
+    </div>
   </section>
 </section>

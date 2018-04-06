@@ -1,6 +1,21 @@
+.topBar {
+  border-bottom: 1px solid rgba(222, 222, 222, 0.6);
+  font-size: 20px;
+  height: 60px;
+  line-height: 60px;
+  padding: 0px 0px 0px 20px;
+
+  .logo {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 6px;
+  }
+}
+
 .routerContainer {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 60px);
   min-height: 400px;
   width: 100vw;
   min-width: 400px;

@@ -1,6 +1,177 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Zfont;
+  src: url('./assets/icomoon.ttf') format('truetype');
+}
+
+.icon {
+  &:before {
+    display: inline-block;
+    font-family: Zfont;
+	}
+
+	&.cancel:before {
+    content: "\e900";
+  }
+
+  &.delete:before {
+    content: "\e901";
+  }
+
+  &.unknown:before {
+    content: "\e902";
+  }
+
+  &.copy:before {
+    content: "\e903";
+  }
+
+  &.edit:before {
+    content: "\e904";
+  }
+
+  &.filled-square:before, &.unchecked:before {
+    content: "\e905";
+  }
+
+  &.tick:before, &.checked:before {
+    content: "\e906";
+  }
+
+  &.square:before {
+    content: "\e907";
+  }
+
+  &.dotted-circles:before {
+    content: "\e908";
+  }
+
+  &.search:before {
+    content: "\e909";
+  }
+
+  &.up-arrow:before {
+    content: "\e90a";
+  }
+
+  &.download:before {
+    content: "\e90b";
+  }
+
+  &.success:before {
+    content: "\e91f";
+  }
+
+  &.down-triangle:before {
+    content: "\e90d";
+  }
+  
+  &.tableIcon:before {
+    content: '\e926';
+  }
+
+  &.lockIcon:before {
+    content: '\e928';
+  }
+
+  &.filter:before {
+    content: "\e90e";
+  }
+
+  &.next:before, &.pull-right:before {
+    content: "\e90f";
+  }
+
+  &.help:before {
+    content: "\e910";
+  }
+
+  &.settings:before {
+    content: "\e911";
+  }
+
+  &.users:before {
+    content: "\e912";
+  }
+
+  &.partner:before {
+    content: "\e914";
+  }
+
+  &.insights:before {
+    content: "\e913";
+  }
+
+  &.segments:before {
+    content: "\e915";
+  }
+
+  &.calendar:before {
+    content: "\e916";
+  }
+
+  &.dollar:before {
+    content: "\e917";
+  }
+
+  &.impression:before {
+    content: "\e918";
+  }
+
+  &.details:before {
+    content: "\e919";
+  }
+
+  &.interests:before {
+    content: "\e91a";
+  }
+
+  &.automotive:before {
+    content: "\e91b";
+  }
+
+  &.device:before {
+    content: "\e91c";
+  }
+
+  &.demographics:before {
+    content: "\e91d";
+  }
+
+  &.close:before {
+    content: "\e921";
+  }
+
+  &.add:before {
+    content: "\e922";
+  }
+
+  &.male:before {
+    content: "\e92A";
+  }
+
+  &.female:before {
+    content: "\e929";
+  }
+
+  &.reload:before {
+    content: "\e92B";
+  }
+}
+
+.fullHeight {
+	height: 100%;
+}
+
 .clearfix {
   clear: both;
+}
+
+.pageComponent {
+	height: 100%;
+	overflow: auto;
+	position: relative;
+	width: 100%;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -20,13 +191,17 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+
+	// Custom styles
+	color: #303030;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

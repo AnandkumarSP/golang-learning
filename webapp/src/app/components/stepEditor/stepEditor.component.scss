@@ -1,0 +1,108 @@
+.stepEditorContainer {
+  background-color: #ECECF1;
+  border: 1px solid rgba(222, 222, 222, 0.6);
+  border-radius: 4px;
+  display: table;
+  height: 100%;
+  width: 100%;
+
+  .sNO {
+    background: white;
+    border-radius: 4px;
+    color: #989898;
+    cursor: move;
+    text-align: center;
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    width: 30px;
+  }
+
+  .content {
+    display: table-cell;
+    padding: 10px;
+    width: calc(100% - 30px);
+
+    .icon.delete {
+      color: red;
+      cursor: pointer;
+      float: right;
+
+      &:hover {
+        font-size: 20px;
+      }
+    }
+
+    .descContainer {
+      padding: 10px 0px;
+
+      button {
+        background: #b4d3f9;
+        border-radius: 20px;
+        border-width: 0px;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        height: 26px;
+        margin: 8px 0px;
+        outline: none;
+        padding: 0px 20px;
+      }
+
+      .desc {
+        font-style: italic;
+      }
+    }
+
+    .stepLabel {
+      color: #ABABAF;
+    }
+
+    .stepSelector {
+      font-size: 14px;
+      height: 26px;
+      min-width: 150px;
+    }
+
+    .inputConfigRow {
+      display: table-row;
+
+      &.header {
+        div {
+          color: #ABABAF;
+        }
+      }
+    }
+
+    .inputConfigCell {
+      border: 1px solid #ABABAF;
+      display: table-cell;
+      padding: 5px 10px;
+
+      &.configName {
+        width: 150px;
+      }
+
+      &.configDataType {
+        text-align: center;
+        width: 60px;
+      }
+
+      &.configInput {
+        text-align: center;
+        width: 200px;
+      }
+
+      &.configDefault {
+        text-align: center;
+        width: 150px;
+      }
+
+      &.configCanUseDefault {
+        text-align: center;
+        width: 30px;
+      }
+    }
+  }
+}
