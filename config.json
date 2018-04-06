@@ -3,84 +3,84 @@
     "AppNexus": {
       "StepsSequence": [
         {
+          "StepName": "incrementByStep",
           "InputConfig": [
             {
               "Name": "Input",
               "DataType": "int",
-              "Default": "1",
               "Input": "",
+              "Default": "1",
               "CanUseDefault": true
             },
             {
               "Name": "Step",
               "DataType": "int",
-              "Default": "1",
               "Input": "",
+              "Default": "1",
               "CanUseDefault": true
             }
-          ],
-          "StepName": "incrementByStep"
+          ]
         }
       ]
     },
     "DDP": {
       "StepsSequence": [
         {
+          "StepName": "incrementByStep",
           "InputConfig": [
             {
               "Name": "Input",
               "DataType": "int",
-              "Default": "0",
               "Input": "",
+              "Default": "0",
               "CanUseDefault": true
             },
             {
               "Name": "Step",
               "DataType": "int",
+              "Input": "GInput1",
               "Default": "3",
+              "CanUseDefault": true
+            }
+          ]
+        },
+        {
+          "StepName": "multiply",
+          "InputConfig": [
+            {
+              "Name": "Input1",
+              "DataType": "int",
+              "Input": "0.0",
+              "Default": "0",
+              "CanUseDefault": true
+            },
+            {
+              "Name": "Input2",
+              "DataType": "int",
+              "Input": "0.0",
+              "Default": "2",
+              "CanUseDefault": true
+            }
+          ]
+        },
+        {
+          "StepName": "add",
+          "InputConfig": [
+            {
+              "Name": "Input1",
+              "DataType": "int",
               "Input": "",
-              "CanUseDefault": true
-            }
-          ],
-          "StepName": "incrementByStep"
-        },
-        {
-          "InputConfig": [
-            {
-              "Name": "Input1",
-              "DataType": "int",
               "Default": "0",
-              "Input": "0.0",
               "CanUseDefault": true
             },
             {
               "Name": "Input2",
               "DataType": "int",
+              "Input": "",
               "Default": "2",
-              "Input": "0.0",
               "CanUseDefault": true
             }
-          ],
-          "StepName": "add"
-        },
-        {
-          "InputConfig": [
-            {
-              "Name": "Input1",
-              "DataType": "int",
-              "Default": "0",
-              "Input": "0.0",
-              "CanUseDefault": true
-            },
-            {
-              "Name": "Input2",
-              "DataType": "int",
-              "Default": "2",
-              "Input": "1.0",
-              "CanUseDefault": true
-            }
-          ],
-          "StepName": "multiply"
+          ]
         }
       ]
     }

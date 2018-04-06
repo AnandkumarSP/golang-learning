@@ -8,20 +8,23 @@ import (
 	"../logger"
 )
 
-// configuration defines the uploader config.
-type configuration struct {
-	Channels map[string]struct {
-		StepsSequence []struct {
-			StepName    string
-			InputConfig []struct {
-				Name          string
-				DataType      string
-				Input         string
-				Default       string
-				CanUseDefault bool
-			}
+// SingleChannelConfig defines the config of a single channel
+type SingleChannelConfig struct {
+	StepsSequence []struct {
+		StepName    string
+		InputConfig []struct {
+			Name          string
+			DataType      string
+			Input         string
+			Default       string
+			CanUseDefault bool
 		}
 	}
+}
+
+// configuration defines the uploader config.
+type configuration struct {
+	Channels             map[string]SingleChannelConfig
 	FirstStepInputConfig []struct {
 		Name          string
 		DataType      string
@@ -110,6 +113,7 @@ func UpdateConfig(obj interface{}) (err error) {
 	if err != nil {
 		return
 	}
+	RefreshUploaderConfig()
 	return
 }
 

@@ -1,0 +1,21 @@
+<section>
+  Channel editor component
+  <section>
+    <p>New: {{systemConfig.Channels[channelName].$new}}</p>
+    <p>Modified: {{systemConfig.Channels[channelName].$modified}}</p>
+    <input [readonly]="!systemConfig.Channels[channelName].$new" [(ngModel)]="_channelName" (blur)="_updateChannelName()" >
+    <div *ngFor="let step of systemConfig.Channels[channelName].StepsSequence; let i = index; let last = last;">
+      <div (click)="addStep(i)" (dragover)="dragoverStage($event)" (drop)="dropStage($event, i)">Add Step</div>
+      <app-step-editor
+        [index]="i"
+        [stepConfig]="step"
+        [channelName]="channelName"
+        [systemConfig]="systemConfig"
+        [pluginsConfig]="pluginsConfig"
+        [deleteStep]="deleteStep"
+        [dragStage]="dragStage"
+        [getDupStepConfig]="getDupStepConfig"></app-step-editor>
+    </div>
+    <div (click)="addStep()">Add Step</div>
+  </section>
+</section>

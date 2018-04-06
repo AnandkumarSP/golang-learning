@@ -1,0 +1,18 @@
+$sidebarWidth: 300px;
+
+.channelsPage {
+  height: 100%;
+  width: 100%;
+
+  .channelsListContainer {
+    float: left;
+    border: 1px solid black;
+    width: $sidebarWidth;
+  }
+
+  .channelEditorContainer {
+    float: left;
+    border: 1px solid black;
+    width: calc(100% - #{$sidebarWidth});
+  }
+}

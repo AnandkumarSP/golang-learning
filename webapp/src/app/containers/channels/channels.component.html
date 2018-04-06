@@ -1,0 +1,25 @@
+<section class="channelsPage">
+  <section class="channelsListContainer">
+    <ng-container *ngIf="channelService.channelsConfig.Channels">
+      <div
+        *ngFor="let channel of channelService.channelsConfig.Channels | ObjNgFor:true:false"
+        (click)="selectChannel(channel)">
+        {{channel}}
+      </div>
+    </ng-container>
+    <div (click)="addChannel()">Add Channel</div>
+  </section>
+
+  <section class="channelEditorContainer">
+    <ng-container *ngIf="selectedChannel">
+      <app-channel-editor
+        [channelName]="selectedChannel"
+        [updateChannelName]="updateChannelName"
+        [systemConfig]="channelService.channelsConfig"
+        [pluginsConfig]="channelService.pluginsConfig"></app-channel-editor>
+      <button (click)="saveChannel()">Save Channel</button>
+    </ng-container>
+  </section>
+
+  <section class="clearfix"></section>
+</section>

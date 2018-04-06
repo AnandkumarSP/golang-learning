@@ -1,0 +1,27 @@
+<section>
+  <span>{{index + 1}}.{{stepConfig.StepName}}</span>
+  <select [(ngModel)]="stepConfig.StepName" (ngModelChange)="stepChanged()">
+    <option *ngFor="let option of pluginsConfig | ObjNgFor:true" [value]="option">{{option}}</option>
+  </select>
+  <span *ngIf="systemConfig.Channels[channelName].StepsSequence.length > 1" (click)="deleteStep(index)">Delete</span>
+  <div draggable="true" (drag)="dragStage($event, index)">Drag</div>
+  <section>
+    <button (click)="toggleInputDescription()">{{showDesc ? 'Hide' : 'Show'}} Description</button>
+    <span *ngIf="showDesc">{{pluginsConfig[stepConfig.StepName].Desc}}</span>
+    <div
+      *ngFor="let inputConfig of stepConfig.InputConfig">
+      {{inputConfig.Name}}
+      {{inputConfig.DataType}}
+      {{inputConfig.Input}}
+      <select [(ngModel)]="inputConfig.Input" (ngModelChange)="channelModified()">
+        <option
+          [value]="option.value"
+          *ngFor="let option of getPossibleInputs(index, inputConfig)">
+          {{option.name}}
+        </option>
+      </select>
+      {{inputConfig.Default}}
+      {{inputConfig.CanUseDefault}}
+    </div>
+  </section>
+</section>

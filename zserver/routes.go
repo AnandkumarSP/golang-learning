@@ -47,13 +47,17 @@ func getChannelConfig(c *gin.Context) {
 func setChannelConfig(c *gin.Context) {
 	defer genericResponseErrorHandler(c)
 
-	var pluginsConfig interface{}
-	c.BindJSON(&pluginsConfig)
-	err := utils.UpdateConfig(pluginsConfig)
+	var payload struct {
+		ChannelName   string
+		ChannelConfig utils.SingleChannelConfig
+	}
+	c.BindJSON(&payload)
+	utils.Config.Channels[payload.ChannelName] = payload.ChannelConfig
+	err := utils.UpdateConfig(utils.Config)
 	if err != nil {
 		panic(utils.NewCustomError(err.Error(), http.StatusInternalServerError))
 	}
-	c.String(http.StatusOK, "")
+	c.JSON(http.StatusOK, "")
 }
 
 func getPluginsConfig(c *gin.Context) {
