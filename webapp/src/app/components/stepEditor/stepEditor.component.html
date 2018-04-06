@@ -2,7 +2,7 @@
   <section
     class="sNO"
     draggable="true"
-    (drag)="dragStage($event, index)"
+    (dragstart)="dragStage($event, index)"
     (dragend)="dropEnd()">{{index + 1}}</section>
 
   <section class="content">

@@ -76,9 +76,10 @@ export class ChannelEditorComponent implements OnInit, OnChanges {
     this.dragStageIndex = index;
   }
 
-  public dragoverStage(e, index) {
+  public dragoverStage(e, index, activate) {
     e.preventDefault();
     this.dragStageDropIndex = index;
+    this.dragging = !!activate;
   }
 
   public dropStage(e, targetIndex) {

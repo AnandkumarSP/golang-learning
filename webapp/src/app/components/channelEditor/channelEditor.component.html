@@ -18,7 +18,8 @@
         [ngClass]="{drop: dragging && dragStageDropIndex === i}"
         (click)="addStep(i)"
         (drop)="dropStage($event, i)"
-        (dragover)="dragoverStage($event, i)">
+        (dragenter)="dragoverStage($event, i, true)"
+        (dragleave)="dragoverStage($event, i)">
         <span class="insert">INSERT STEP</span>
         <span class="move">MOVE STAGE HERE</span>
       </div>
