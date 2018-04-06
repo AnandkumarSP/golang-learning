@@ -12,7 +12,7 @@ export class ChannelEditorComponent implements OnInit, OnChanges {
   @Input() updateChannelName: any;
 
   public dragging = false;
-  public dragStageDropIndex = 0;
+  public dragStageDropIndex = -1;
   private dragStageIndex = 0;
   private _channelName = '';
 
@@ -25,7 +25,6 @@ export class ChannelEditorComponent implements OnInit, OnChanges {
   }
 
   public ngOnInit() {
-    console.log(this);
   }
 
   public ngOnChanges() {
@@ -72,19 +71,21 @@ export class ChannelEditorComponent implements OnInit, OnChanges {
   }
 
   public dragStage(e, index) {
+    e.dataTransfer.effectAllowed = 'move';
     this.dragging = true;
     this.dragStageIndex = index;
   }
 
   public dragoverStage(e, index, activate) {
     e.preventDefault();
-    this.dragStageDropIndex = index;
-    this.dragging = !!activate;
+    e.dataTransfer.dropEffect = 'move';
+    this.dragging = activate && !((this.dragStageIndex === index) || (this.dragStageIndex === index - 1));
+    this.dragStageDropIndex = this.dragging ? index : -1;
   }
 
   public dropStage(e, targetIndex) {
     e.preventDefault();
-    if (this.dragStageIndex === targetIndex) {
+    if ((this.dragStageIndex === targetIndex) || (this.dragStageIndex === targetIndex - 1)) {
       // Take no action
       return;
     }

@@ -12,7 +12,6 @@ export class ChannelsComponent {
   public selectedChannel = '';
 
   constructor(public channelService: ChannelService) {
-    console.log(this);
     this.updateChannelName = this.updateChannelName.bind(this);
   }
 

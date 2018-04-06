@@ -18,7 +18,7 @@
         [ngClass]="{drop: dragging && dragStageDropIndex === i}"
         (click)="addStep(i)"
         (drop)="dropStage($event, i)"
-        (dragenter)="dragoverStage($event, i, true)"
+        (dragover)="dragoverStage($event, i, true)"
         (dragleave)="dragoverStage($event, i)">
         <span class="insert">INSERT STEP</span>
         <span class="move">MOVE STAGE HERE</span>
@@ -38,10 +38,11 @@
     <div
       title="Add Step"
       class="paddingBtm20 separator icon next"
-      [ngClass]="{drop: dragging && dragStageDropIndex === i}"
+      [ngClass]="{drop: dragging && dragStageDropIndex === systemConfig.Channels[channelName].StepsSequence.length}"
       (click)="addStep()"
-      (drop)="dropStage($event, i)"
-      (dragover)="dragoverStage($event, i)">
+      (drop)="dropStage($event, systemConfig.Channels[channelName].StepsSequence.length)"
+      (dragover)="dragoverStage($event, systemConfig.Channels[channelName].StepsSequence.length, true)"
+      (dragleave)="dragoverStage($event, systemConfig.Channels[channelName].StepsSequence.length)">
       <span class="insert">INSERT STEP</span>
       <span class="move">MOVE STAGE HERE</span>
     </div>

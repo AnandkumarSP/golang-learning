@@ -21,7 +21,6 @@ export class StepEditorComponent implements OnInit {
   public showDesc = false;
 
   public ngOnInit() {
-    console.log(this);
   }
 
   public toggleInputDescription() {
