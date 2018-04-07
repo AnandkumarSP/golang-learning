@@ -15,33 +15,34 @@ export class ChannelService {
 
   public init() {
     this.refreshChannelsConfig();
+    this.refreshSystemConfig();
     this.refreshPluginsConfig();
   }
 
   public refreshChannelsConfig() {
-    this.httpService.doGet(`${environment.uploaderEndPoint}/channelConfig`)
+    this.httpService.doGet(`${environment.uploaderEndPoint}/workflows`)
       .then((res) => {
-        this.channelsConfig = res;
-        this.channelsConfigOriginal = JSON.parse(JSON.stringify(res));
+        this.channelsConfig.Channels = res;
+        this.channelsConfigOriginal.Channels = JSON.parse(JSON.stringify(res));
+      });
+  }
+
+  public refreshSystemConfig() {
+    this.httpService.doGet(`${environment.uploaderEndPoint}/systemconfig`)
+      .then((res) => {
+        this.channelsConfig.FirstStepInputConfig = res['inputs'];
       });
   }
 
   public refreshPluginsConfig() {
-    this.httpService.doGet(`${environment.uploaderEndPoint}/pluginsConfig`)
+    this.httpService.doGet(`${environment.uploaderEndPoint}/plugins`)
       .then((res) => {
         this.pluginsConfig = res;
       });
   }
 
   public updateChannelConfig(channelName, channelConfig) {
-    const payload = {
-      ChannelName: channelName,
-      ChannelConfig: channelConfig
-    };
-
-    console.log(payload);
-
-    this.httpService.doPost(`${environment.uploaderEndPoint}/channelConfig`, payload)
+    this.httpService.doPost(`${environment.uploaderEndPoint}/workflow/${channelName}`, channelConfig)
       .then((res) => {
         return this.refreshChannelsConfig();
       });

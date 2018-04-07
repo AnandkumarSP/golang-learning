@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  uploaderEndPoint: 'http://127.0.0.1:8080'
+  // uploaderEndPoint: 'http://127.0.0.1:8080'
+  uploaderEndPoint: 'http://127.0.0.1:9000'
 };

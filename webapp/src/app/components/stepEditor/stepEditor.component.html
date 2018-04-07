@@ -42,7 +42,7 @@
           <input [(ngModel)]="inputConfig.Input" >
         </div> -->
         <div class="inputConfigCell configInput">
-          <select [(ngModel)]="inputConfig.Input" (ngModelChange)="channelModified()">
+          <select [(ngModel)]="inputConfig.Input" (ngModelChange)="channelModified()" >
             <option
               [value]="option.value"
               *ngFor="let option of getPossibleInputs(index, inputConfig)">
@@ -51,10 +51,10 @@
           </select>
         </div>
         <div class="inputConfigCell configDefault">
-          <input [(ngModel)]="inputConfig.Default" >
+          <input [(ngModel)]="inputConfig.Default" (ngModelChange)="channelModified()" >
         </div>
         <div class="inputConfigCell configCanUseDefault">
-          <input [(ngModel)]="inputConfig.CanUseDefault" type="checkbox" >
+          <input [(ngModel)]="inputConfig.CanUseDefault" type="checkbox" (ngModelChange)="channelModified()" >
         </div>
       </div>
 
