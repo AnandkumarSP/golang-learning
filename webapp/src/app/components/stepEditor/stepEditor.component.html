@@ -51,7 +51,7 @@
           </select>
         </div>
         <div class="inputConfigCell configDefault">
-          <input [(ngModel)]="inputConfig.Default" (ngModelChange)="channelModified()" >
+          <input [(ngModel)]="inputConfig.$strDefault" (ngModelChange)="updateDefault(inputConfig)" >
         </div>
         <div class="inputConfigCell configCanUseDefault">
           <input [(ngModel)]="inputConfig.CanUseDefault" type="checkbox" (ngModelChange)="channelModified()" >

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 const noop = function () {};
 
@@ -7,7 +7,7 @@ const noop = function () {};
   templateUrl: './stepEditor.component.html',
   styleUrls: ['./stepEditor.component.scss']
 })
-export class StepEditorComponent implements OnInit {
+export class StepEditorComponent implements OnInit, OnChanges {
   @Input() index = 1;
   @Input() stepConfig: any = {};
   @Input() channelName = '';
@@ -21,6 +21,12 @@ export class StepEditorComponent implements OnInit {
   public showDesc = false;
 
   public ngOnInit() {
+  }
+
+  public ngOnChanges() {
+    this.stepConfig.InputConfig.forEach((cfg) => {
+      cfg.$strDefault = JSON.stringify(cfg.Default);
+    });
   }
 
   public toggleInputDescription() {
@@ -39,6 +45,15 @@ export class StepEditorComponent implements OnInit {
     this.channelModified();
   }
 
+  public updateDefault(cfg) {
+    try {
+      cfg.Default = JSON.parse(cfg.$strDefault);
+    } catch (e) {
+      console.error('Invalid JSON input for Input config.');
+    }
+    this.channelModified();
+  }
+
   public getPossibleInputs(index, inputConfig) {
     const retval = [{
       name: 'None',
@@ -46,11 +61,11 @@ export class StepEditorComponent implements OnInit {
     }];
 
     this.systemConfig['FirstStepInputConfig']
-      .forEach((sc) => {
+      .forEach((sc, i) => {
         if (sc.DataType === inputConfig.DataType) {
           retval.push({
             name: `${sc.Name}`,
-            value: `G${sc.Name}`
+            value: `-1.${i}`
           });
         }
       });

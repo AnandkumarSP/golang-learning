@@ -27,7 +27,8 @@
       <section class="btnContainer">
         <button
           class="btn"
-          (click)="saveChannel()">SAVE CHANGES</button>
+          (click)="saveChannel()"
+          [disabled]="!channelService.channelsConfig.Channels[selectedChannel].$modified">SAVE CHANGES</button>
         <button
           class="btn"
           (click)="revertChanges()"
