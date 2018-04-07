@@ -42,6 +42,9 @@ export class StepEditorComponent implements OnInit, OnChanges {
 
     Object.keys(this.stepConfig).forEach(k => delete this.stepConfig[k]);
     Object.keys(newStepConfig).forEach(k => this.stepConfig[k] = newStepConfig[k]);
+    this.stepConfig.InputConfig.forEach((cfg) => {
+      cfg.$strDefault = JSON.stringify(cfg.Default);
+    });
     this.channelModified();
   }
 
